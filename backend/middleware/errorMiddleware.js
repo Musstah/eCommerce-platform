@@ -1,5 +1,7 @@
 const notFound = (req, res, next) => {
-  const error = new Error(`Not Found = ${req.originalUrl}`);
+  const error = new Error(
+    `Not Found = ${req.originalUrl} (***middleware/errorMiddleware***)`
+  );
   res.status(404);
   next(error);
 };
@@ -10,7 +12,7 @@ const errorHandler = (err, req, res, next) => {
 
   // Check for Mongoose bad ObjectId
   if (err.name === "CastError" && err.kind === "ObjectId") {
-    message = `Resource not found`;
+    message = `Resource not found (***middleware/errorMiddleware***)`;
     statusCode = 404;
   }
 
