@@ -30,7 +30,7 @@ const createProduct = asyncHandler(async (req, res) => {
     name: "Sample name",
     price: 0,
     user: req.user._id,
-    image: "images/sample.jpg",
+    image: "/images/sample.jpg",
     brand: "Sample brand",
     category: "Sample category",
     countInStock: 0,
@@ -61,7 +61,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.countInStock = countInStock;
 
     const updatedProduct = await product.save();
-    res(updatedProduct);
+    res.json(updatedProduct);
   } else {
     res.status(404);
     throw new Error("Resource not found (***controllers/productController***)");

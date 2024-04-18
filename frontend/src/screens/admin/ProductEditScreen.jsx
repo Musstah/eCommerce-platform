@@ -59,10 +59,12 @@ const ProductEditScreen = () => {
     };
 
     const result = await updateProduct(updatedProduct);
+    console.log(result);
     if (result.error) {
       toast.error(result.error);
     } else {
       toast.success("Product updated");
+      refetch();
       navigate("/admin/productlist");
     }
   };
